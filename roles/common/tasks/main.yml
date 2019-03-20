@@ -1,0 +1,46 @@
+---
+- name: Update packages
+  pacman: 
+    update-cache: yes
+    upgrade: yes
+
+- name: Install terminal font
+  pacman: 
+    name: terminus-font
+
+- name: Globally set up vconsole font and keymap(=us)
+  copy: 
+    src: vconsole.conf 
+    dest: /etc/vconsole.conf
+
+- name: Install sudo, polkit
+  pacman:
+      name: sudo polkit
+
+- name: Allow wheel group to use wheel
+  copy:
+    src: 01_wheel_sudoers
+    dest: /etc/sudoers.d/01_wheel
+    validate: visudo -cf %s
+
+- name: Install generic utilities
+  pacman:
+    name: tree rsync zip unzip base-devel dosfstools ntfs-3g
+
+- name: Create new user
+  user:
+    name: michael
+    shell: /bin/bash
+    groups: wheel
+    createhome: yes
+    generate_ssh_key: yes
+    append: yes
+
+- name: Install yay, pacman utility
+  aur:
+    name: yay
+    use: makepkg
+    skip_installed: yes
+  become: yes
+  become_user: michael
+

@@ -1,0 +1,8 @@
+---
+- name: Gather facts
+  hosts: all
+  gather_facts: yes
+
+- hosts: blag
+  roles: 
+    - common
