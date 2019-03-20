@@ -1,0 +1,11 @@
+---
+- name: Install xorg
+  pacman: 
+    name: mesa xorg-server xorg-server-xwayland virtualbox-guest-modules-arch virtualbox-guest-utils 
+
+- name: Start virtual box service
+  systemd:
+    enabled: yes
+    name: vboxservice
+    state: started
+   

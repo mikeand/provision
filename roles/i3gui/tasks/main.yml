@@ -51,3 +51,8 @@
       - jre8-openjdk 
       - firefox 
       - chromium 
+
+- name: Install I3 window manager details
+  pacman: 
+    name:
+      - i3-gaps
