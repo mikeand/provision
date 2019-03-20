@@ -56,3 +56,14 @@
   pacman: 
     name:
       - i3-gaps
+
+- name: Copy xinit utilities
+  copy:
+    src: .xinitrc
+    dest: /home/michael/.xinitrc
+
+- name: Create default bash profile
+  copy:
+    src: .bash_profile
+    dest: /home/michael/.bash_profile
+
