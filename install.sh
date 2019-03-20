@@ -7,5 +7,5 @@ if [[ "$HOST" == "" ]]; then
 fi
 
 
-ansible-playbook ./main.yml --inventory ./hosts --limit $HOST "$@"
+ansible-playbook ./main.yml --inventory ./hosts --connection=local --limit $HOST "$@"
 

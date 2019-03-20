@@ -17,15 +17,17 @@
   pacman:
       name: sudo polkit
 
-- name: Allow wheel group to use wheel
-  copy:
-    src: 01_wheel_sudoers
-    dest: /etc/sudoers.d/01_wheel
-    validate: visudo -cf %s
+- name: Allow wheel group to use run sudo 
+  lineinfile:
+     path: /etc/sudoers.d/01_wheel
+     state: present
+     line: "%wheel ALL=(ALL) ALL"
+     validate: /usr/sbin/visudo -cf %s
+     create: yes    
 
 - name: Install generic utilities
   pacman:
-    name: tree rsync zip unzip base-devel dosfstools ntfs-3g
+    name: tree rsync zip unzip base-devel dosfstools ntfs-3g openssh
 
 - name: Create new user
   user:
@@ -36,11 +38,23 @@
     generate_ssh_key: yes
     append: yes
 
+- name: Create user for aur to install 
+  user: 
+    name: aur_builder
+
+- name: Allow aur builder user to create items
+  lineinfile:
+     path: /etc/sudoers.d/02_aur_builder-allow-to-sudo-pacman
+     state: present
+     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+     validate: /usr/sbin/visudo -cf %s
+     create: yes    
+
 - name: Install yay, pacman utility
   aur:
     name: yay
     use: makepkg
     skip_installed: yes
   become: yes
-  become_user: michael
+  become_user: aur_builder
 
