@@ -56,7 +56,7 @@
   pacman: 
     name:
       - i3
-      - rvxt-unicode
+      - rxvt-unicode
 
 - name: Copy xinit utilities
   copy:
