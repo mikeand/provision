@@ -8,3 +8,9 @@
     - common
     - xorg-virtualbox
     - i3gui
+
+- hosts: dingbat
+  roles:
+    - common
+    - xorg-intel
+    - i3gui
