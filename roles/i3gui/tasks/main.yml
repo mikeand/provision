@@ -55,7 +55,8 @@
 - name: Install I3 window manager details
   pacman: 
     name:
-      - i3-gaps
+      - i3
+      - rvxt-unicode
 
 - name: Copy xinit utilities
   copy:
