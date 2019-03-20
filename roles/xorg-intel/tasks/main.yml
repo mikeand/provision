@@ -1,0 +1,4 @@
+---
+- name: Install xorg
+  pacman: 
+    name: xf86-video-intel mesa xorg-server vulkan-intel xorg-server-xwayland

@@ -1,0 +1,53 @@
+---
+- name: Install xorg / fonts
+  pacman: 
+    name: 
+      - xorg-server
+      - xorg-xinit 
+      - xorg-xsetroot # For setting the default cursor
+      - xorg-xprop # For querying info about open windows
+      - xorg-xev # For printing x server events
+      - xorg-xfontsel # For visually selecting font strings
+      - xorg-xrandr
+      - xorg-xbacklight      
+      - noto-fonts        # install a bunch of fonts
+      - noto-fonts-extra 
+      - ttf-anonymous-pro 
+      - ttf-bitstream-vera 
+      - ttf-caladea 
+      - ttf-carlito 
+      - ttf-cheapskate 
+      - ttf-cormorant 
+      - ttf-croscore 
+      - ttf-dejavu 
+      - ttf-droid 
+      - ttf-fantasque-sans-mono 
+      - ttf-fira-code 
+      - ttf-fira-mono 
+      - ttf-fira-sans 
+      - ttf-font-awesome 
+      - ttf-freefont 
+      - ttf-gentium 
+      - ttf-hack 
+      - ttf-ibm-plex 
+      - ttf-inconsolata 
+      - ttf-ionicons 
+      - ttf-liberation 
+      - ttf-linux-libertine 
+      - ttf-opensans 
+      - ttf-roboto 
+      - ttf-ubuntu-font-family
+
+- name: Install gui applications
+  pacman:
+    name: 
+      - libreoffice-fresh 
+      - libreoffice-extension-texmaths 
+      - libreoffice-extension-writer2latex 
+      - hunspell 
+      - hunspell-en_AU 
+      - hyphen 
+      - hyphen-en 
+      - jre8-openjdk 
+      - firefox 
+      - chromium 

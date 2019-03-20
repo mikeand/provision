@@ -6,3 +6,5 @@
 - hosts: blag
   roles: 
     - common
+    - xorg-intel
+    - i3gui
