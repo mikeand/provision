@@ -41,21 +41,46 @@
       - ttf-ubuntu-font-family
       - alsa-utils
 
+- name: Install additional fonts
+  aur:
+    name:
+      - ttf-ms-fonts
+      - ttf-iosevka-term
+      - ttf-symbola
+      - ttf-emojione-color
+      - ttf-oswald
+  become: yes
+  become_user: aur_builder
+
 - name: Enable powersaving utility
   systemd:
-    name:
-       - tlp
-       - tlp-sleep
+    name: tlp.service	
+    enabled: yes
+    state: started
+
+- name: Enalble sleep
+  systemd:
+    name: tlp-sleep.service
+    enabled: yes
+    state: started
+
+- name: Enable ssd trim
+  systemd:
+    name: fstrim.timer
     enabled: yes
     state: started
 
 - name: Disalbe rf-kill, managed by tlp
   systemd:
-     name: 
-       - systemd-rfkill
-       - systemd-rfkill.socket     
+     name: systemd-rfkill.service     
      masked: yes
      state: stopped
+
+- name: Disable rf-kill socket
+  systemd:
+    name:  systemd-rfkill.socket
+    masked: yes
+    state: stopped
 
 - name: Install gui applications
   pacman:
