@@ -10,6 +10,8 @@
       - xorg-xfontsel # For visually selecting font strings
       - xorg-xrandr
       - xorg-xbacklight      
+      - tlp
+      - tlp-rdw
       - noto-fonts        # install a bunch of fonts
       - noto-fonts-extra 
       - ttf-anonymous-pro 
@@ -37,6 +39,23 @@
       - ttf-opensans 
       - ttf-roboto 
       - ttf-ubuntu-font-family
+      - alsa-utils
+
+- name: Enable powersaving utility
+  systemd:
+    name:
+       - tlp
+       - tlp-sleep
+    enabled: yes
+    state: started
+
+- name: Disalbe rf-kill, managed by tlp
+  systemd:
+     name: 
+       - systemd-rfkill
+       - systemd-rfkill.socket     
+     masked: yes
+     state: stopped
 
 - name: Install gui applications
   pacman:
@@ -49,14 +68,20 @@
       - hyphen 
       - hyphen-en 
       - jre8-openjdk 
+      - jdk-openjdk
       - firefox 
-      - chromium 
+      - chromium
+      - gedit
+      - gedit-plugins
+      - keepassxc
+      
 
 - name: Install I3 window manager details
   pacman: 
     name:
       - i3
       - rxvt-unicode
+      - dmenu
 
 - name: Copy xinit utilities
   copy:
@@ -67,4 +92,29 @@
   copy:
     src: .bash_profile
     dest: /home/michael/.bash_profile
+
+- name: Create an .Xresources
+  copy: 
+    src: .Xresources
+    dest: /home/michael/.Xresources
+
+- name: Install i3 apps/rxvt extensions
+  aur:
+    name: 
+      - urxvt-fullscreen
+      - urxvt-resize-font-git  
+      - polybar
+  become: yes
+  become_user: aur_builder
+
+
+- name: Install dev applications
+  aur:
+    name:
+      - visual-studio-code-bin
+      - pycharm-professional
+      - webstorm-jre
+      - gitkraken
+  become: yes
+  become_user: aur_builder
 
