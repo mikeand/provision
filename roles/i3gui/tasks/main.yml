@@ -12,6 +12,8 @@
       - xorg-xbacklight      
       - tlp
       - tlp-rdw
+      - htop
+      - powertop
       - noto-fonts        # install a bunch of fonts
       - noto-fonts-extra 
       - ttf-anonymous-pro 
@@ -43,12 +45,16 @@
 
 - name: Install additional fonts
   aur:
+    skip_installed: true
     name:
       - ttf-ms-fonts
       - ttf-iosevka-term
       - ttf-symbola
       - ttf-emojione-color
       - ttf-oswald
+      - siji-git
+      - termsyn-font
+      - ttf-material-icons
   become: yes
   become_user: aur_builder
 
@@ -99,7 +105,18 @@
       - gedit
       - gedit-plugins
       - keepassxc
-      
+      - syncthing
+      - mpd
+      - ncmpc
+      - libmpdclient
+      - libmpd
+      - thunar
+      - thunar-volman
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - gvfs
+      - xfce4-panel
+      - tumbler
 
 - name: Install I3 window manager details
   pacman: 
@@ -107,34 +124,69 @@
       - i3
       - rxvt-unicode
       - dmenu
+      - compton
+      - feh
+      - rofi
+
+- name: Copy mpd configuration
+  copy:
+    src: mpd.conf
+    dest: /home/michael/.config/mpd/mpd.conf
+    owner: michael
 
 - name: Copy xinit utilities
   copy:
     src: .xinitrc
     dest: /home/michael/.xinitrc
+    owner: michael
 
 - name: Create default bash profile
   copy:
     src: .bash_profile
     dest: /home/michael/.bash_profile
+    owner: michael
 
 - name: Create an .Xresources
   copy: 
     src: .Xresources
     dest: /home/michael/.Xresources
+    owner: michael
+
+- name: Copy compton conf
+  copy:
+    src: compton.conf
+    dest: /home/michael/.config/compton/
+    owner: michael
+
+- name: copy i3 configuration
+  copy: 
+    src: i3/config
+    dest: /home/michael/.config/i3
+    owner: michael
+
+- name: Copy polybar configuration
+  copy:
+    src: polybar/
+    dest: /home/michael/.config/polybar/
+    owner: michael
+    mode: preserve
 
 - name: Install i3 apps/rxvt extensions
   aur:
+    skip_installed: true
     name: 
       - urxvt-fullscreen
       - urxvt-resize-font-git  
+      - urxvt-vtwheel
       - polybar
+      - networkmanager-dmenu-git
   become: yes
   become_user: aur_builder
 
 
 - name: Install dev applications
   aur:
+    skip_installed: true
     name:
       - visual-studio-code-bin
       - pycharm-professional

@@ -58,3 +58,8 @@
   become: yes
   become_user: aur_builder
 
+- name: Enable ssh
+  systemd:
+    name: sshd.socket
+    enabled: yes
+    state: started
