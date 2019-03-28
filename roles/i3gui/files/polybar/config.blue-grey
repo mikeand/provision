@@ -73,9 +73,8 @@ module-margin-right = 1
 
 ;==========================================================
 
-font-0 = "Fantasque Sans Mono:pixelsize=12;2"
-font-1 = "Material Icons:size=13;4"
-
+font-0 = "Fantasque Sans Mono:pixelsize=15;2"
+font-1 = "Material Icons:size=15;4"
 ;==========================================================
 
 cursor-click = pointer
@@ -113,7 +112,7 @@ enable-click = true
 enable-scroll = true
 format-padding = 0
 
-icon-0 = 1;
+icon-0 = 1;
 icon-1 = 2;
 icon-2 = 3;
 icon-3 = 4;
@@ -121,10 +120,10 @@ icon-3 = 4;
 icon-default = 
 
 format = <label-state>
-label-active = %icon%
-label-occupied = %icon%
-label-urgent = %icon%
-label-empty = %icon%
+label-active = %index% %icon%
+label-occupied = %index% %icon%
+label-urgent = %index% %icon%
+label-empty = %index% %icon%
 
 label-occupied-padding = 2
 label-empty-padding = 2
@@ -198,7 +197,7 @@ tail = true
 type = internal/battery
 full-at = 99
 time-format = %H:%M
-battery = BAT1
+battery = BAT0
 adapter = AC
 format-charging = <animation-charging> <label-charging>
 ;label-charging = %percentage%% (%time%)

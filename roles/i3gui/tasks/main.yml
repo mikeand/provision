@@ -55,6 +55,7 @@
       - siji-git
       - termsyn-font
       - ttf-material-icons
+      - nerd-fonts-complete
   become: yes
   become_user: aur_builder
 
@@ -117,6 +118,10 @@
       - gvfs
       - xfce4-panel
       - tumbler
+      - dfc         # nicer df
+      - ncdu        # ncurses disk usage
+      - hexyl       # hex editor
+      - python-pip
 
 - name: Install I3 window manager details
   pacman: 
@@ -127,6 +132,12 @@
       - compton
       - feh
       - rofi
+      - playerctl 
+      - neofetch
+
+- name: Install powerline
+  pip:
+    name: powerline-shell
 
 - name: Copy mpd configuration
   copy:
@@ -170,6 +181,12 @@
     dest: /home/michael/.config/polybar/
     owner: michael
     mode: preserve
+
+- name: Copy powerline shell config
+  copy:
+    src: powerline-shell/config.json
+    dest: /home/michael/.config/powerline-shell/
+    owner: michael
 
 - name: Install i3 apps/rxvt extensions
   aur:
