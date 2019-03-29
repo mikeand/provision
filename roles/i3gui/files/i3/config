@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show drun
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -94,12 +94,12 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
+set $ws1 "web"
+set $ws2 "code"
+set $ws3 "term"
+set $ws4 "office"
+set $ws5 "edit"
+set $ws6 "utility"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -128,6 +128,14 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Assign Workspaces:
+assign [class="Firefox"] $ws1
+assign [class="Chromium"] $ws1
+assign [class="Code"] $ws2
+assign [class="jetbrains"] $ws2
+assign [class="URxvt"] $ws3
+assign [class="libreoffice"] $ws4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
