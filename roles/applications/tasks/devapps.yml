@@ -1,6 +1,7 @@
 ---
 - name: Install dev applications
   aur:
+    skip_installed: true
     name:
       - visual-studio-code-bin
       - pycharm-professional
