@@ -26,9 +26,23 @@
       - ncdu        # ncurses disk usage
       - hexyl       # hex editor
       - python-pip
+      - bluez-utils
 
 - name: Copy mpd configuration
   copy:
     src: mpd.conf
     dest: /home/michael/.config/mpd/
     owner: michael
+
+- name: Enable bluetooth
+  lineinfile:
+    dest: /etc/bluetooth/main.conf
+    regexp: '#*AutoEnable*=*false'
+    line: 'AutoEnable=true'
+    backrefs: yes
+
+- name: Start bluetooth service
+  service:
+    name: bluetooth
+    enabled: yes
+    state: started
