@@ -1,0 +1,12 @@
+---
+- name: Install gnome programs
+  pacman:
+    name:
+      - gnome
+      - gnome-extra
+
+
+- name: Enable Gnome Display Manager
+  service:
+    name: gdm
+    enabled: True

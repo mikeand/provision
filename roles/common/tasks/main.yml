@@ -63,3 +63,18 @@
     name: sshd.socket
     enabled: yes
     state: started
+
+
+- name: Install powersaving
+  pacman:
+    name:
+      - tlp
+      - tlp-rdw
+
+
+- name: Enable powersaving utility
+  systemd:
+    name: tlp.service
+    enabled: yes
+    state: started
+

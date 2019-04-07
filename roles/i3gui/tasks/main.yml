@@ -10,66 +10,9 @@
       - xorg-xfontsel # For visually selecting font strings
       - xorg-xrandr
       - xorg-xbacklight      
-      - tlp
-      - tlp-rdw
       - htop
       - powertop
-      - noto-fonts        # install a bunch of fonts
-      - noto-fonts-extra 
-      - ttf-anonymous-pro 
-      - ttf-bitstream-vera 
-      - ttf-caladea 
-      - ttf-carlito 
-      - ttf-cormorant 
-      - ttf-croscore 
-      - ttf-dejavu 
-      - ttf-droid 
-      - ttf-fantasque-sans-mono 
-      - ttf-fira-code 
-      - ttf-fira-mono 
-      - ttf-fira-sans 
-      - ttf-font-awesome 
-      - ttf-freefont 
-      - ttf-gentium 
-      - ttf-hack 
-      - ttf-ibm-plex 
-      - ttf-inconsolata 
-      - ttf-ionicons 
-      - ttf-liberation 
-      - ttf-linux-libertine 
-      - ttf-opensans 
-      - ttf-roboto 
-      - ttf-ubuntu-font-family
       - alsa-utils
-
-- name: Install additional fonts
-  aur:
-    skip_installed: true
-    name:
-      - ttf-ms-fonts
-      - ttf-iosevka-term
-      - ttf-symbola
-      - ttf-emojione-color
-      - ttf-oswald
-      - ttf-cheapskate 
-      - siji-git
-      - termsyn-font
-      - ttf-material-icons
-      - nerd-fonts-complete
-  become: yes
-  become_user: aur_builder
-
-- name: Enable powersaving utility
-  systemd:
-    name: tlp.service	
-    enabled: yes
-    state: started
-
-- name: Enalble sleep
-  systemd:
-    name: tlp-sleep.service
-    enabled: yes
-    state: started
 
 - name: Enable ssd trim
   systemd:
@@ -92,25 +35,6 @@
 - name: Install gui applications
   pacman:
     name: 
-      - libreoffice-fresh 
-      - libreoffice-extension-texmaths 
-      - libreoffice-extension-writer2latex 
-      - hunspell 
-      - hunspell-en_AU 
-      - hyphen 
-      - hyphen-en 
-      - jre8-openjdk 
-      - jdk-openjdk
-      - firefox 
-      - chromium
-      - gedit
-      - gedit-plugins
-      - keepassxc
-      - syncthing
-      - mpd
-      - ncmpc
-      - libmpdclient
-      - libmpd
       - thunar
       - thunar-volman
       - thunar-archive-plugin
@@ -119,9 +43,6 @@
       - xfce4-panel
       - tumbler
       - dfc         # nicer df
-      - ncdu        # ncurses disk usage
-      - hexyl       # hex editor
-      - python-pip
 
 - name: Install I3 window manager details
   pacman: 
@@ -139,11 +60,6 @@
   pip:
     name: powerline-shell
 
-- name: Copy mpd configuration
-  copy:
-    src: mpd.conf
-    dest: /home/michael/.config/mpd/
-    owner: michael
 
 - name: Copy xinit utilities
   copy:
@@ -201,14 +117,4 @@
   become_user: aur_builder
 
 
-- name: Install dev applications
-  aur:
-    skip_installed: true
-    name:
-      - visual-studio-code-bin
-      - pycharm-professional
-      - webstorm-jre
-      - gitkraken
-  become: yes
-  become_user: aur_builder
 

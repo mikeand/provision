@@ -1,0 +1,47 @@
+---
+- name: Install Fonts
+  pacman:
+    name:
+      - noto-fonts        # install a bunch of fonts
+      - noto-fonts-extra
+      - ttf-anonymous-pro
+      - ttf-bitstream-vera
+      - ttf-caladea
+      - ttf-carlito
+      - ttf-cormorant
+      - ttf-croscore
+      - ttf-dejavu
+      - ttf-droid
+      - ttf-fantasque-sans-mono
+      - ttf-fira-code
+      - ttf-fira-mono
+      - ttf-fira-sans
+      - ttf-font-awesome
+      - ttf-freefont
+      - ttf-gentium
+      - ttf-hack
+      - ttf-ibm-plex
+      - ttf-inconsolata
+      - ttf-ionicons
+      - ttf-liberation
+      - ttf-linux-libertine
+      - ttf-opensans
+      - ttf-roboto
+      - ttf-ubuntu-font-family
+
+- name: Install additional fonts
+  aur:
+    skip_installed: true
+    name:
+      - ttf-ms-fonts
+      - ttf-iosevka-term
+      - ttf-symbola
+      - ttf-emojione-color
+      - ttf-oswald
+      - ttf-cheapskate
+      - siji-git
+      - termsyn-font
+      - ttf-material-icons
+      - nerd-fonts-complete
+  become: yes
+  become_user: aur_builder

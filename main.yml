@@ -13,10 +13,12 @@
   roles:
     - common
     - xorg-intel
-    - i3gui
+    - applications
+    - gnome
 
 - hosts: wombat
   roles:
     - common
     - xorg-intel
-    - i3gui
+    - applications
+    - gnome

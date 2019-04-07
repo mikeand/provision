@@ -1,0 +1,10 @@
+---
+- name: Install dev applications
+  aur:
+    name:
+      - visual-studio-code-bin
+      - pycharm-professional
+      - webstorm-jre
+      - gitkraken
+  become: yes
+  become_user: aur_builder

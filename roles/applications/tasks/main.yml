@@ -1,0 +1,4 @@
+---
+- include: fonts.yml
+- include: apps.yml
+- include: devapps.yml

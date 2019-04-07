@@ -1,0 +1,34 @@
+---
+- name: Install gui applications
+  pacman:
+    name:
+      - libreoffice-fresh
+      - libreoffice-extension-texmaths
+      - libreoffice-extension-writer2latex
+      - hunspell
+      - hunspell-en_AU
+      - hyphen
+      - hyphen-en
+      - jre8-openjdk
+      - jdk-openjdk
+      - firefox
+      - chromium
+      - gedit
+      - gedit-plugins
+      - keepassxc
+      - syncthing
+      - mpd
+      - ncmpc
+      - libmpdclient
+      - libmpd
+      - gvfs
+      - dfc         # nicer df
+      - ncdu        # ncurses disk usage
+      - hexyl       # hex editor
+      - python-pip
+
+- name: Copy mpd configuration
+  copy:
+    src: mpd.conf
+    dest: /home/michael/.config/mpd/
+    owner: michael
