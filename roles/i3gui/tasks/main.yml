@@ -20,7 +20,6 @@
       - ttf-bitstream-vera 
       - ttf-caladea 
       - ttf-carlito 
-      - ttf-cheapskate 
       - ttf-cormorant 
       - ttf-croscore 
       - ttf-dejavu 
@@ -52,6 +51,7 @@
       - ttf-symbola
       - ttf-emojione-color
       - ttf-oswald
+      - ttf-cheapskate 
       - siji-git
       - termsyn-font
       - ttf-material-icons
@@ -142,7 +142,7 @@
 - name: Copy mpd configuration
   copy:
     src: mpd.conf
-    dest: /home/michael/.config/mpd/mpd.conf
+    dest: /home/michael/.config/mpd/
     owner: michael
 
 - name: Copy xinit utilities

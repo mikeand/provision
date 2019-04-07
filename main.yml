@@ -14,3 +14,9 @@
     - common
     - xorg-intel
     - i3gui
+
+- hosts: wombat
+  roles:
+    - common
+    - xorg-intel
+    - i3gui
